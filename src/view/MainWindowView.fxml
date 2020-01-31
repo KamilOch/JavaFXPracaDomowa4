@@ -5,26 +5,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.ArcTo?>
 <?import javafx.scene.shape.ClosePath?>
+<?import javafx.scene.shape.CubicCurveTo?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.LineTo?>
 <?import javafx.scene.shape.MoveTo?>
 <?import javafx.scene.shape.Path?>
-<?import javafx.scene.shape.QuadCurveTo?>
-
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
-      <Path fx:id="path" fill="DODGERBLUE" fillRule="EVEN_ODD" scaleX="2.0" scaleY="2.0" stroke="BLACK" strokeType="INSIDE">
-          <elements>
-              <MoveTo x="5.0" />
-              <LineTo x="150.0" y="50.0" />
-              <ArcTo radiusX="30.0" radiusY="25" x="200.0" y="100.0" />
-              <QuadCurveTo controlX="300.0" controlY="300.0" y="150.0" />
-              <ClosePath />
-          </elements>
+      <Path fx:id="movementPath" fill="DODGERBLUE" stroke="BLACK" strokeType="INSIDE">
+         <elements>
+            <MoveTo />
+            <CubicCurveTo controlX1="600.0" controlX2="300.0" controlY1="100.0" controlY2="100.0" x="200.0" y="300.0" />
+         </elements>
       </Path>
       <ImageView fitHeight="600.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -43,6 +39,22 @@
                   </LinearGradient>
                </fill>
             </Ellipse>
+            <Path fx:id="pathTail" stroke="BLACK" strokeType="INSIDE">
+                <elements>
+                    <MoveTo x="150.0" y="200.0" />
+                    <LineTo x="100.0" y="250.0" />
+                  <LineTo x="100.0" y="150.0" />
+                    <ClosePath />
+                </elements>
+               <fill>
+                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                     <stops>
+                        <Stop color="#ff1f84" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </RadialGradient>
+               </fill>
+            </Path>
          </children>
       </AnchorPane>
    </children>
